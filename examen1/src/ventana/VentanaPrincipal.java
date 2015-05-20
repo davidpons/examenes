@@ -60,11 +60,13 @@ public class VentanaPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
+		panelDelincuentes=new PanelDelincuentes();
+		contentPane.add(panelDelincuentes, "Delincuentes");
+		
 		panelPrincipal=new PanelPrincipal();
 		contentPane.add(panelPrincipal, "Principal");
 		
-		panelDelincuentes=new PanelDelincuentes();
-		contentPane.add(panelDelincuentes, "Delincuentes");
+
 		
 		panelAntecedentes=new PanelAntecedentes();
 		contentPane.add(panelAntecedentes, "Delincuentes");		

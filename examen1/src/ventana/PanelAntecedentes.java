@@ -5,8 +5,15 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import modelo.DelincuenteModel;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class PanelAntecedentes extends JPanel {
 	private JTextField textField_Antecedentes;
+	
+	private DelincuenteModel modelo;
 
 	/**
 	 * Create the panel.
@@ -24,6 +31,12 @@ public class PanelAntecedentes extends JPanel {
 		textField_Antecedentes.setColumns(10);
 		
 		JButton salvar_Button = new JButton("Salvar >>");
+		salvar_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				modelo.salvarAntecedentes(textField_Antecedentes.getText());
+			}
+		});
 		salvar_Button.setBounds(10, 266, 106, 23);
 		add(salvar_Button);
 
