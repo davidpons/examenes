@@ -27,7 +27,7 @@ public class PanelPrincipal extends JPanel {
 		setLayout(null);
 		
 		usuariosDesplegable = new JComboBox();
-		usuariosDesplegable.setBounds(58, 65, 107, 20);
+		usuariosDesplegable.setBounds(55, 65, 107, 20);
 		add(usuariosDesplegable);
 		
 		usuariosModel = new UsuarioModel();
@@ -68,11 +68,11 @@ public class PanelPrincipal extends JPanel {
 
 
 		});
-		logInButton.setBounds(51, 154, 89, 23);
+		logInButton.setBounds(55, 157, 107, 23);
 		add(logInButton);
 		
 		logOutButton = new JButton("LogOut");
-		logOutButton.setBounds(51, 204, 89, 23);
+		logOutButton.setBounds(55, 191, 107, 23);
 		add(logOutButton);
 
 	}			
