@@ -19,11 +19,11 @@ public class UsuarioModel {
 
 	public List<String> getUsuarios() {
 		List<String> usuarios = new ArrayList<String>();
-		
+	
 		usuarios.add("David");
 		usuarios.add("Sergio");
-		
-		return usuarios;
+	
+	return usuarios;
 	}
 
 }

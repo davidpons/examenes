@@ -65,8 +65,6 @@ public class PanelPrincipal extends JPanel {
 					}
 				}
 			}
-
-
 		});
 		logInButton.setBounds(55, 157, 107, 23);
 		add(logInButton);
