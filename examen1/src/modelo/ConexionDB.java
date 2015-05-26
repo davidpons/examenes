@@ -25,6 +25,8 @@ public class ConexionDB {
 		this.pass=PASS;
 		this.url="jdbc:mysql://"+this.host+"/"+this.bbdd;
 		
+		
+		conectarDB();
 	}
 	
 	public boolean conectarDB(){

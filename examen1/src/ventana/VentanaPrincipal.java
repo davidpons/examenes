@@ -13,6 +13,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 
+import modelo.ConexionDB;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
@@ -48,9 +53,31 @@ public class VentanaPrincipal extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnPrincipal = new JMenu("Principal");
+		mnPrincipal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("Numero de Paneles: "+contentPane.getComponentCount());
+				contentPane.remove(panelDelincuentes);
+				contentPane.add(panelPrincipal, "Principal");
+				setTitle("Principal");
+				contentPane.validate();
+			}
+		});
 		menuBar.add(mnPrincipal);
 		
 		JMenu mnDelincuentes = new JMenu("Delincuentes");
+		mnDelincuentes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("Numero de Paneles: "+contentPane.getComponentCount());
+				contentPane.remove(panelPrincipal);
+				contentPane.remove(panelAntecedentes);
+				//contentPane.validate();
+				contentPane.add(panelDelincuentes, "Delincuentes");
+				setTitle("Delincuentes");
+				contentPane.validate();
+			}
+		});
 		menuBar.add(mnDelincuentes);
 		
 		contentPane = new JPanel();
@@ -58,16 +85,19 @@ public class VentanaPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
-		panelDelincuentes=new PanelDelincuentes();
-		contentPane.add(panelDelincuentes, "Delincuentes");
-		
-		panelPrincipal=new PanelPrincipal();
-		contentPane.add(panelPrincipal, "Principal");
-		
-
+		String HOST="localhost";
+		String BBDD="delincuentes";
+		String USER="root";
+		String PASS="";
+		ConexionDB conBD = new ConexionDB(HOST, BBDD, USER, PASS);
 		
 		panelAntecedentes=new PanelAntecedentes();
-		contentPane.add(panelAntecedentes, "Delincuentes");		
+		
+		panelDelincuentes=new PanelDelincuentes(this, panelAntecedentes);
+			
+		panelPrincipal=new PanelPrincipal();
+		contentPane.add(panelPrincipal, "Principal");
+				
 
 	}
 }

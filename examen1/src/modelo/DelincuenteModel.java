@@ -1,6 +1,7 @@
 package modelo;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,9 +12,12 @@ public class DelincuenteModel {
 	
 	private Connection con;
 	private Statement instruccion; //Representa la consulta de BD que vamos a lanzar.
+	private PreparedStatement instruccionUpdate; //Representa una operacion de actualizacion de datos
 	private ResultSet delincuentesSet; //Lista de usuarios en formato Sql
 	
 	private String todosSql = "select id,nombre,edad,sexo,nacionalidad,direccion,poblacion,antecedentes from delincuentes";
+	
+	private String salvarAntSql = "update delincuentes set antecedentes=? where id=?";
 	
 	public DelincuenteModel() {
 		con = ConexionDB.getConexion();
@@ -44,7 +48,7 @@ public class DelincuenteModel {
 			
 			instruccion.close();
 			
-			return (Delincuente[]) delincuentesList.toArray();
+			return  delincuentesList.toArray(new Delincuente[delincuentesList.size()]);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,8 +56,19 @@ public class DelincuenteModel {
 		}		
 	}
 
-	public void salvarAntecedentes(String text) {
+	public void salvarAntecedentes(String antecedentes, int id) {
 		// TODO Programar salvarAntecedentes
+		try {
+			instruccionUpdate = con.prepareStatement(salvarAntSql);
+			instruccionUpdate.setString(1, antecedentes);
+			instruccionUpdate.setInt(2, id);
+			instruccionUpdate.executeUpdate();
+			
+			instruccionUpdate.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

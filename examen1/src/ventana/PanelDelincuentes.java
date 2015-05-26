@@ -36,14 +36,20 @@ public class PanelDelincuentes extends JPanel {
 	private JScrollPane delincuentesJScrollPane;
 	
 	private Delincuente deliSeleccionado;
+	
+	private VentanaPrincipal principal;
+	private PanelAntecedentes panelAntecedentes;
+	private DelincuenteModel delincuenteModel;
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelDelincuentes() {
+	public PanelDelincuentes(VentanaPrincipal prin, PanelAntecedentes panelAnt) {
 		setLayout(null);
+		this.principal = prin;
+		this.panelAntecedentes = panelAnt;
 				
-		DelincuenteModel delincuenteModel = new DelincuenteModel();
+		delincuenteModel = new DelincuenteModel();
 		
 		Delincuente[] delincuentes = delincuenteModel.getDelincuentes();
 		delincuentesJList = new JList(delincuentes);
@@ -145,10 +151,20 @@ public class PanelDelincuentes extends JPanel {
 				
 				//TODO: Accedes al delincuente seleccionado.
 				//deliSeleccionado;
+				if(deliSeleccionado!=null)
+					visualizarPanelAntecedentes();
 			}
 		});
 		btnAntecendentes.setBounds(259, 266, 146, 23);
 		add(btnAntecendentes);
 	
+	}
+	
+	private void visualizarPanelAntecedentes(){
+		panelAntecedentes.setDelincuente(deliSeleccionado);
+		panelAntecedentes.setModelo(delincuenteModel);
+		principal.getContentPane().remove(this);
+		principal.getContentPane().add(panelAntecedentes);
+		principal.getContentPane().validate();
 	}
 }

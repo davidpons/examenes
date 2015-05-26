@@ -14,14 +14,14 @@ public class Delincuente {
 
 	public Delincuente(int id, String nombre, String edad, String sexo,
 			String nacionalidad, String direccion, String poblacion, String antecedentes) {
-		this.id = id;
+		this.setId(id);
 		this.nombre = nombre;
 		this.edad = edad;
 		this.sexo = sexo;
 		this.nacionalidad=nacionalidad;
 		this.direccion = direccion;
 		this.poblacion = poblacion;
-		this.antecedentes = antecedentes;
+		this.setAntecedentes(antecedentes);
 	}
 
 	public String getNombre() {
@@ -58,6 +58,22 @@ public class Delincuente {
 	public String toString() {
 		
 		return nombre;
+	}
+
+	public String getAntecedentes() {
+		return antecedentes;
+	}
+
+	public void setAntecedentes(String antecedentes) {
+		this.antecedentes = antecedentes;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
