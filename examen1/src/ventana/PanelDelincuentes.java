@@ -60,10 +60,8 @@ public class PanelDelincuentes extends JPanel {
 			
 			public void valueChanged(ListSelectionEvent e) {
 				//TODO: Programar que se actualicen todos los campos de la parte derecha.
-				System.out.println(String.format("El indice mostrado es %1d, el selectedIndex es %2d", INDICE_MOSTRADO, delincuentesJList.getSelectedIndex()));
-				if(e.getLastIndex()!=INDICE_MOSTRADO){	
+				if(e.getLastIndex()!=INDICE_MOSTRADO){
 					
-					System.out.println("Seleccionado Value: "+delincuentesJList.getSelectedValue());
 					deliSeleccionado = (Delincuente) delincuentesJList.getSelectedValue();
 					refrescarDelincuente(deliSeleccionado);
 				}
@@ -95,7 +93,7 @@ public class PanelDelincuentes extends JPanel {
 		nombreTextField.setColumns(10);
 		
 		lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(259, 21, 46, 14);
+		lblNombre.setBounds(259, 21, 89, 14);
 		add(lblNombre);
 		
 		edadTextField = new JTextField();
@@ -104,7 +102,7 @@ public class PanelDelincuentes extends JPanel {
 		edadTextField.setColumns(10);
 		
 		lblEdad = new JLabel("Edad");
-		lblEdad.setBounds(259, 69, 46, 14);
+		lblEdad.setBounds(259, 69, 64, 14);
 		add(lblEdad);
 		
 		sexoTextField = new JTextField();
@@ -113,7 +111,7 @@ public class PanelDelincuentes extends JPanel {
 		sexoTextField.setColumns(10);
 		
 		lblSexo = new JLabel("Sexo");
-		lblSexo.setBounds(341, 69, 46, 14);
+		lblSexo.setBounds(341, 69, 64, 14);
 		add(lblSexo);
 		
 		nacionalidadTextField = new JTextField();
@@ -122,18 +120,16 @@ public class PanelDelincuentes extends JPanel {
 		add(nacionalidadTextField);
 		
 		lblNacionalidad = new JLabel("Nacionalidad");
-		lblNacionalidad.setBounds(259, 114, 72, 14);
+		lblNacionalidad.setBounds(259, 114, 128, 14);
 		add(lblNacionalidad);
-		
-
-		
+				
 		direccionTextField = new JTextField();
 		direccionTextField.setColumns(10);
 		direccionTextField.setBounds(259, 180, 146, 20);
 		add(direccionTextField);
 		
 		lblDireccin = new JLabel("Dirección");
-		lblDireccin.setBounds(259, 162, 46, 14);
+		lblDireccin.setBounds(259, 162, 128, 14);
 		add(lblDireccin);
 		
 		poblacionTextField = new JTextField();
@@ -142,7 +138,7 @@ public class PanelDelincuentes extends JPanel {
 		add(poblacionTextField);
 		
 		lblPoblacion = new JLabel("Población");
-		lblPoblacion.setBounds(259, 211, 46, 14);
+		lblPoblacion.setBounds(259, 211, 128, 14);
 		add(lblPoblacion);
 		
 		btnAntecendentes = new JButton("Antecedentes >>");
@@ -150,7 +146,7 @@ public class PanelDelincuentes extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				//TODO: Accedes al delincuente seleccionado.
-				//deliSeleccionado;
+				
 				if(deliSeleccionado!=null)
 					visualizarPanelAntecedentes();
 			}

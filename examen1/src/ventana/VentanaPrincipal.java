@@ -30,6 +30,9 @@ public class VentanaPrincipal extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
+		ConexionDB panelPrincipal = new ConexionDB("localhost", "delincuentes", "root", "");
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -55,8 +58,7 @@ public class VentanaPrincipal extends JFrame {
 		JMenu mnPrincipal = new JMenu("Principal");
 		mnPrincipal.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("Numero de Paneles: "+contentPane.getComponentCount());
+			public void mouseClicked(MouseEvent e) {				
 				contentPane.remove(panelDelincuentes);
 				contentPane.add(panelPrincipal, "Principal");
 				setTitle("Principal");
@@ -68,11 +70,9 @@ public class VentanaPrincipal extends JFrame {
 		JMenu mnDelincuentes = new JMenu("Delincuentes");
 		mnDelincuentes.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("Numero de Paneles: "+contentPane.getComponentCount());
+			public void mouseClicked(MouseEvent e) {			
 				contentPane.remove(panelPrincipal);
 				contentPane.remove(panelAntecedentes);
-				//contentPane.validate();
 				contentPane.add(panelDelincuentes, "Delincuentes");
 				setTitle("Delincuentes");
 				contentPane.validate();

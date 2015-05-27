@@ -6,6 +6,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
+import modelo.ConexionDB;
 import modelo.UsuarioModel;
 
 import java.awt.Component;
@@ -24,6 +25,14 @@ public class PanelPrincipal extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelPrincipal() {
+		String HOST="localhost";
+		String BBDD="delincuentes";
+		String USER="root";
+		String PASS="";
+		ConexionDB conBD = new ConexionDB(HOST, BBDD, USER, PASS);
+		
+		ConexionDB usuariosDb = new ConexionDB("localhost", "delincuentes", "root", "");
+		
 		setLayout(null);
 		
 		usuariosDesplegable = new JComboBox();
@@ -72,11 +81,11 @@ public class PanelPrincipal extends JPanel {
 		logOutButton = new JButton("LogOut");
 		logOutButton.setBounds(55, 191, 107, 23);
 		add(logOutButton);
-
 	}			
 	
 	private String obtenerUsuarioSeleccionado() {
 		// TODO Auto-generated method stub
 		return (String) usuariosDesplegable.getSelectedItem();
 	}
+		
 }
